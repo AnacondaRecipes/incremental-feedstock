@@ -16,14 +16,21 @@ build:
 
 requirements:
   host:
-    - python >=3.6
+    - python
     - pip
+    - setuptools
+    - wheel
   run:
     - python >=3.6
 
 test:
   imports:
     - incremental
+  requires:
+    - pip
+    - python <3.10
+  commands:
+    - pip check
 
 about:
   home: https://github.com/hawkowl/incremental
@@ -32,6 +39,7 @@ about:
   license_file: LICENSE
   summary: Incremental is a small library that versions your Python projects.
   dev_url: https://github.com/hawkowl/incremental
+  doc_url: https://github.com/twisted/incremental/blob/trunk/README.rst
 
 extra:
   recipe-maintainers:
