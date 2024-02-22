@@ -1,5 +1,5 @@
 {% set name = "incremental" %}
-{% set version = "21.3.0" %}
+{% set version = "22.10.0" %}
 
 package:
   name: {{ name }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 02f5de5aff48f6b9f665d99d48bfc7ec03b6e3943210de7cfc88856d755d6f57
+  sha256: 912feeb5e0f7e0188e6f42241d2f450002e11bbc0937c65865045854c24c0bd0
 
 build:
   number: 0
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install --no-deps --no-build-isolation . -vv
 
 requirements:
   host:
@@ -28,18 +28,17 @@ test:
     - incremental
   requires:
     - pip
-    - python <3.10
   commands:
     - pip check
 
 about:
-  home: https://github.com/hawkowl/incremental
+  home: https://github.com/twisted/incremental
   license: MIT
   license_family: MIT
   license_file: LICENSE
   summary: Incremental is a small library that versions your Python projects.
-  dev_url: https://github.com/hawkowl/incremental
-  doc_url: https://github.com/twisted/incremental/blob/trunk/README.rst
+  dev_url: https://github.com/twisted/incremental
+  doc_url: https://twisted.org/incremental/docs/
 
 extra:
   recipe-maintainers:
