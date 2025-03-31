@@ -1,5 +1,5 @@
 {% set name = "incremental" %}
-{% set version = "22.10.0" %}
+{% set version = "24.7.2" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 912feeb5e0f7e0188e6f42241d2f450002e11bbc0937c65865045854c24c0bd0
+  sha256: fb4f1d47ee60efe87d4f6f0ebb5f70b9760db2b2574c59c8e8912be4ebd464c9
 
 build:
   number: 0
@@ -16,12 +16,17 @@ build:
 
 requirements:
   host:
-    - python
+    - python 3.9
     - pip
     - setuptools
     - wheel
+    - tomli
   run:
-    - python >=3.6
+    - python >=3.9 
+    - setuptools >=61.0
+    # remove after python_min hits 3.11
+    # keeping this noarch: python
+    - tomli
 
 test:
   imports:
